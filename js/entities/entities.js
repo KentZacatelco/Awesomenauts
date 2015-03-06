@@ -12,9 +12,11 @@ game.PlayerEntity = me.Entity.extend({
         }]);
     
         this.body.setVelocity(5, 20);
+        me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
         
         this.renderable.addAnimation("idle", [78]);
         this.renderable.addAnimation("walk", [143, 144, 145, 146, 147, 148, 149, 150, 151], 80);
+        this.renderable.addAnimation("attack", [65, 66, 67, 68, 69, 70, 71, 72], 80);
         
         this.renderable.setCurrentAnimation("idle");
     },
@@ -22,10 +24,25 @@ game.PlayerEntity = me.Entity.extend({
     update: function(delta){
         if(me.input.isKeyPressed("right")){
             this.body.vel.x += this.body.accel.x * me.timer.tick;
+            this.flipX(false);
+        }else if(me.input.isKeyPressed("left")){
+            this.body.vel.x -= this.body.accel.x * me.timer.tick;
+            this.flipX(true);
         }else{
             this.body.vel.x = 0;
         }
-        if(this.body.vel.x !==0){
+        
+        if(me.input.isKeyPressed("jump") && !this.jumping && !this.falling){
+            this.jumping = true;
+            this.body.vel.y -= this.body.accel.y * me.timer.tick;
+        }
+        
+        if(me.input.isKeyPressed("attack")){
+            if(!this.renderable.isCurrentAnimation("attack")){
+                this.renderable.setCurrentAnimation("attack", "idle");
+                this.renderable.setAnimationFrame();
+            }
+        }else if(this.body.vel.x !==0){
             if(!this.renderable.isCurrentAnimation("walk")){
                 this.renderable.setCurrentAnimation("walk");
             }
@@ -48,13 +65,13 @@ game.PlayerBaseEntity = me.Entity.extend({
             spritewidth: "100",
             spriteheight: "100",
             getShape: function(){
-                return (new me.Rect(0, 0, 100, 100)).toPolygon();
+                return (new me.Rect(0, 0, 100, 70)).toPolygon();
             }
         }]);
         this.broken = false;
         this.health = 10;
         this.alwaysUpdate = true;
-        this.body.onCollision = true.onCollision.bind(this);
+        this.body.onCollision = this.onCollision.bind(this);
         console.log("init");
         this.type = "PlayerBaseEntity";
         
@@ -89,13 +106,13 @@ game.EnemyBaseEntity = me.Entity.extend({
             spritewidth: "100",
             spriteheight: "100",
             getShape: function(){
-                return (new me.Rect(0, 0, 100, 100)).toPolygon();
+                return (new me.Rect(0, 0, 100, 70)).toPolygon();
             }
         }]);
         this.broken = false;
         this.health = 10;
         this.alwaysUpdate = true;
-        this.body.onCollision = true.onCollision.bind(this);
+        this.body.onCollision = this.onCollision.bind(this);
         console.log("init");
         this.type = "EnemyBaseEntity";
         
