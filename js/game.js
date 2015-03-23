@@ -12,7 +12,7 @@ var game = {
                 playerHealth: 10,
                 enemyCreepAttack: 1,
                 playerAttack: 1,
-                playerAttackTimer: 800,
+                playerAttackTimer: 850,
                 enemyCreepAttackTimer: 1000,
                 playerMoveSpeed: 5,
                 creepMoveSpeed: 5,
@@ -27,7 +27,8 @@ var game = {
                 exp4: 0, 
                 win: "",
                 pausePos: "",
-                buyscreen: ""
+                buyscreen: "", 
+                buytext: ""
 	},
 	
 	
