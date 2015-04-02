@@ -49,7 +49,7 @@ game.EnemyCreep = me.Entity.extend({
             this.pos.x = this.pos.x +1;
             if((this.now-this.lastHit >= 1000)){
                 this.lastHit = this.now;
-                response.b.loseHealth(1);
+                response.b.loseHealth(game.data.enemyCreepAttack);
             }
         }else if(response.b.type==='PlayerEntity'){
             var xdif = this.pos.x - response.b.pos.x;

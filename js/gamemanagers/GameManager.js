@@ -5,9 +5,11 @@ game.ExperienceManager = Object.extend({
     },
     update: function() {
         if (game.data.win === true && !this.gameover) {
+            //sets the state to gameover and makes you win
             this.gameOver(true);
             alert("YOU WIN");
         } else if (game.data.win === false && !this.gameover) {
+            //sets the state to gameover and makes you lose
             this.gameOver(false);
             alert("YOU LOST");
         }
@@ -15,11 +17,12 @@ game.ExperienceManager = Object.extend({
         return true;
     },
     gameOver: function(win) {
-        if (win) {
+        if(win){
             game.data.exp += 10;
-        } else {
+        }else{
             game.data.exp = +1;
         }
+        //gives 10 exp if you win but 1 if you lose
         this.gameover = true;
         me.save.exp = game.data.exp;
 
@@ -32,18 +35,20 @@ game.ExperienceManager = Object.extend({
                 exp1: game.data.exp1,
                 exp2: game.data.exp2,
                 exp3: game.data.exp3,
-                exp4: game.data.exp4,
+                exp4: game.data.exp4
             },
             dataType: "text"
         })
                 .success(function(response) {
                     if (response === "true") {
+                        //sets state to MENU
                         me.state.change(me.state.MENU);
                     } else {
                         alert(response);
                     }
                 })
                 .fail(function(response) {
+                    //tells if there is an error
                     alert("Fail");
                 });
     }

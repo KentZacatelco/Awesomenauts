@@ -5,23 +5,24 @@ game.PlayScreen = me.ScreenObject.extend({
 	onResetEvent: function() {
 		// reset the score
 		game.data.score = 0;
-
+                //shows what stage is gonna be loaded
                 me.levelDirector.loadLevel("level01");
-                
+                //resets the player's location
                 this.resetPlayer(0, 420)
-                
+                //takes out info from gameTimerManager
                 var gameTimerManager = me.pool.pull("GameTimerManager", 0, 0, {});
                 me.game.world.addChild(gameTimerManager, 0);
-                
+                //grabs information from heroDeathManager
                 var heroDeathManager = me.pool.pull("HeroDeathManager", 0, 0, {});
                 me.game.world.addChild(heroDeathManager, 0);
-                
+                //gets info from experienceManager
                 var experienceManager = me.pool.pull("ExperienceManager", 0, 0, {});
                 me.game.world.addChild(experienceManager, 0);
-                
+                //gets info from spendGold
                 var spendGold = me.pool.pull("SpendGold", 0, 0, {});
                 me.game.world.addChild(spendGold, 0);
                 
+                //sets the keys to set an output wheen the key is pressed
                 me.input.bindKey(me.input.KEY.B, "buy");
                 me.input.bindKey(me.input.KEY.Q, "skill1");
                 me.input.bindKey(me.input.KEY.W, "skill2");

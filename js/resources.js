@@ -5,6 +5,7 @@ game.resources = [
 	 * {name: "example", type:"image", src: "data/img/example.png"},
 	 */
         
+        //files for all the images.
         {name: "background-tiles", type:"image", src: "data/img/background-tiles.png"},
         {name: "meta-tiles", type:"image", src: "data/img/meta-tiles.png"},
         {name: "player", type: "image", src: "data/img/orcSpear.png"},
@@ -15,6 +16,7 @@ game.resources = [
         {name: "gold-screen", type: "image", src: "data/img/spend.png"},
         {name: "load-screen", type: "image", src: "data/img/loadpic.png"},
         {name: "new-screen", type: "image", src: "data/img/newpic.png"},
+        {name: "spear", type: "image", src: "data/img/spear.png"},
 
 	/* Atlases 
 	 * @example
@@ -27,7 +29,7 @@ game.resources = [
 	 * {name: "example01", type: "tmx", src: "data/map/example01.json"},
  	 */
         
-        {name: "level01", type: "tmx", src: "data/map/test.tmx"},
+        {name: "level01", type: "tmx", src: "data/map/test.tmx"}
 
 	/* Background music. 
 	 * @example

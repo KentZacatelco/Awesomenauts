@@ -3,13 +3,14 @@
 require_once(__DIR__ . "/../model/config.php");
 
 $array = array(
+    //arrays the exp to save progress
     'exp' => '',
     'exp1' => '',
     'exp2' => '',
     'exp3' => '',
     'exp4' => '',
 );
-
+//makes sure that the username and password has no invalid characters
 $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
 $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
 $query = $_SESSION["connection"]->query("SELECT * FROM users WHERE username = '$username'");

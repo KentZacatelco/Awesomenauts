@@ -1,7 +1,9 @@
 game.SpendGold = Object.extend({
     init: function(x, y, settings){
+        //sets last buy too now
         this.now = new Date().getTime();
         this.lastBuy = new Date().getTime();
+        //checks if state is paused
         this.paused = false;
         this.alwaysUpdate = true;
         this.updateWhenPaused = true;
@@ -11,8 +13,11 @@ game.SpendGold = Object.extend({
     update: function(){
         this.now = new Date().getTime();
         
+        //checks if the buy key is pressed and was not pressed in the last second
         if(me.input.isKeyPressed("buy") && this.now-this.lastBuy >=1000){
+            //sets thee state to buy
             this.lastBuy = this.now;
+            //checks if it is already buying or not
             if(!this.buying){
                 this.startBuying();
             }else{
@@ -20,7 +25,7 @@ game.SpendGold = Object.extend({
             }
         }
         
-        this.checkBuyKeys()
+        this.checkBuyKeys();
         
         return true;
     },
@@ -28,11 +33,13 @@ game.SpendGold = Object.extend({
     startBuying: function(){
         this.buying = true;
         game.data.pausePos = me.game.viewport.localToWorld(0, 0);
+        //sets the buy screen
         game.data.buyscreen = new me.Sprite(game.data.pausePos.x, game.data.pausePos.y, me.loader.getImage('gold-screen'));
         game.data.buyscreen.updateWhenPaused = true;
         game.data.buyscreen.setOpacity(0.8);
         me.game.world.addChild(game.data.buyscreen, 34);
         game.data.player.body.setVelocity(0,0);
+        //pauses the PLAY state
         me.state.pause(me.state.PLAY);
         me.input.bindKey(me.input.KEY.F1, "F1", true);
         me.input.bindKey(me.input.KEY.F2, "F2", true);
@@ -48,11 +55,13 @@ game.SpendGold = Object.extend({
             init: function(){
                 this._super(me.Renderable, 'init', [game.data.pausePos.x, game.data.pausePos.y, 300, 50]);
                 this.font = new me.Font("Arial", 26, "white");
+                ///updates things when paused
                 this.updateWhenPaused = true;
                 this.alwaysUpdate = true;
             },
             
             draw: function(renderer){
+                //shows the texts and place of the texts with these lines of code.
                 this.font.draw(renderer.getContext(), "PRESS F1-F6 TO BUY, B TO EXIT. Current Gold: " + game.data.gold, this.pos.x, this.pos.y);
                 this.font.draw(renderer.getContext(), "Skill 1: Increasing Damage. Current Level: " + game.data.skill1 + " Cost: " + ((game.data.skill1+1)*10), this.pos.x, this.pos.y + 40);
                 this.font.draw(renderer.getContext(), "Skill 2: Run Faster! Current Level: " + game.data.skill2 + " Cost: " + ((game.data.skill2+1)*10), this.pos.x, this.pos.y + 80);
@@ -67,9 +76,11 @@ game.SpendGold = Object.extend({
     
     stopBuying: function(){
         this.buying = false;
+        //resumes the state to PLAY
         me.state.resume(me.state.PLAY);
         game.data.player.body.setVelocity(game.data.playerMoveSpeed, 20);
         me.game.world.removeChild(game.data.buyscreen);
+        //it unbinds the keys to prevent people buying outside of the shop
         me.input.unbindKey(me.input.KEY.F1, "F1", true);
         me.input.unbindKey(me.input.KEY.F2, "F2", true);
         me.input.unbindKey(me.input.KEY.F3, "F3", true);
@@ -80,6 +91,7 @@ game.SpendGold = Object.extend({
     },
     
     checkBuyKeys: function(){
+        //it check for the input of the keys
         if(me.input.isKeyPressed("F1")){
             if(this.checkCost(1)){
                 this.makePurchase(1);
@@ -108,6 +120,7 @@ game.SpendGold = Object.extend({
     },
     
     checkCost: function(skill){
+        //checks if you have enough gold to buy stuff
         if(skill===1 && (game.data.gold >= ((game.data.skill1+1)*10))){
             return true;
         }else if(skill===2 && (game.data.gold >= ((game.data.skill2+1)*10))){
@@ -126,6 +139,7 @@ game.SpendGold = Object.extend({
     },
     
     makePurchase: function(skill){
+        //upgrades the skill if you could afford it
         if(skill===1){
             game.data.gold -= ((game.data.skill1 + 1)*10);
             game.data.skill1 += 1;

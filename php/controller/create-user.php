@@ -1,9 +1,11 @@
 <?php
     require_once(__DIR__ . "/../model/config.php");
     
+    //makes sure that the username and password dont have any forign charaters
     $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
     
+    //makes the max limit have 500 characters
     $salt = "$5$" . "rounds=500$" . uniqid(mt_rand(), true) . "$";
     
     $hashedPassword = crypt($password, $salt);
@@ -24,6 +26,7 @@
     if($query) {
         echo "true";
     }else{
+        //tells if there is any errors
         echo "<p>" . $_SESSION["connection"]->error . "</p>";
     }
     

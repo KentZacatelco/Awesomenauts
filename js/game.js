@@ -5,6 +5,8 @@ var game = {
     data: {
         // score
         score: 0,
+        option1: "",
+        option2: "",
         enemyBaseHealth: 10,
         playerBaseHealth: 10,
         enemyCreepHealth: 10,
@@ -17,9 +19,10 @@ var game = {
         creepMoveSpeed: 5,
         gameTimerManager: "",
         heroDeathManager: "",
+        spearTimer: 1000,
         player: "",
         exp: 0,
-        gold: 100000000000000000000000000000,
+        gold: 10,
         skill1: 0,
         skill2: 0,
         skill3: 0,
@@ -46,6 +49,7 @@ var game = {
             });
         }
 
+        //my now screnns that not in used.
         me.state.SPENDEXP = 112;
         me.state.LOAD = 113;
         me.state.NEW = 114;
@@ -72,7 +76,9 @@ var game = {
         me.pool.register("HeroDeathManager", game.HeroDeathManager);
         me.pool.register("ExperienceManager", game.ExperienceManager);
         me.pool.register("SpendGold", game.SpendGold);
+        me.pool.register("spear", game.SpearThrow);
 
+        //the screen states that will be in the game 
         me.state.set(me.state.MENU, new game.TitleScreen());
         me.state.set(me.state.PLAY, new game.PlayScreen());
         me.state.set(me.state.SPENDEXP, new game.SpendExp());
