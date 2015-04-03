@@ -8,7 +8,7 @@ game.PlayScreen = me.ScreenObject.extend({
                 //shows what stage is gonna be loaded
                 me.levelDirector.loadLevel("level01");
                 //resets the player's location
-                this.resetPlayer(0, 420)
+                this.resetPlayer(10, 0);
                 //takes out info from gameTimerManager
                 var gameTimerManager = me.pool.pull("GameTimerManager", 0, 0, {});
                 me.game.world.addChild(gameTimerManager, 0);
@@ -21,6 +21,9 @@ game.PlayScreen = me.ScreenObject.extend({
                 //gets info from spendGold
                 var spendGold = me.pool.pull("SpendGold", 0, 0, {});
                 me.game.world.addChild(spendGold, 0);
+                
+                game.data.minimap = me.pool.pull("minimap", 10, 10, {});
+                me.game.world.addChild(game.data.minimap, 30);
                 
                 //sets the keys to set an output wheen the key is pressed
                 me.input.bindKey(me.input.KEY.B, "buy");

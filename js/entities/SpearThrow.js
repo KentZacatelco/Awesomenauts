@@ -1,6 +1,6 @@
 game.SpearThrow = me.Entity.extend({
     init: function(x, y, settings, facing){
-       this._super(me.Entity, 'init', [x, y, {
+        this._super(me.Entity, 'init', [x, y, {
                 image: "spear",
                 width: 48,
                 height: 48,
