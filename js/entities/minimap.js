@@ -10,6 +10,7 @@ game.minimap = me.Entity.extend({
                     return (new me.Rect(0, 0, 438, 176)).toPolygon();
                 }
         }]);
+        //makes sure that the map isnt stuck to the background of the map.
         this.floating = true;
     
     }

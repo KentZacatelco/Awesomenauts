@@ -1,6 +1,7 @@
 game.EnemyCreep = me.Entity.extend({
     init: function(x, y, settings){
         this._super(me.Entity, 'init', [x, y, {
+                //sets image as creep
                 image: "creep1",
                 width: 32,
                 height: 64,
@@ -12,6 +13,7 @@ game.EnemyCreep = me.Entity.extend({
         }]);
         this.health = game.data.enemyCreepHealth;
         this.alwaysUpdate = true;
+        //update the attack timer
         this.attacking = false;
         this.lastAttacking = new Date().getTime();
         this.lastHit = new Date().getTime();
@@ -26,11 +28,13 @@ game.EnemyCreep = me.Entity.extend({
     },
     
     loseHealth: function(damage){
+        //sets when the lose health they take damage equal to the attacker's attack
         this.health =this.health - damage;
     },
     
     update: function(delta){
         if(this.health <= 0){
+            //removes the entity if health is below 0
             me.game.world.removeChild(this);
         }
         this.now = new Date().getTime();
@@ -42,6 +46,7 @@ game.EnemyCreep = me.Entity.extend({
     },
     
     collideHandler: function(response){
+        //checks if it collides with any Entity
         if(response.b.type==='PlayerBase'){
             this.attacking=true;
             this.lastAttacking=this.now;

@@ -24,8 +24,9 @@ game.PlayerBaseEntity = me.Entity.extend({
     
     update:function(delta){
         if(this.health<=0){
+            //sets the building to be broken and make the player lose
             this.broken = true;
-            game.data.game = false;
+            this.data.lose = false;
             this.renderable.setCurrentAnimation("broken");
         }
         this.body.update(delta);
@@ -35,7 +36,8 @@ game.PlayerBaseEntity = me.Entity.extend({
     },
     
     loseHealth: function(damage){
-      this.health = this.health - damage;  
+        //sets it so it loses health equal to the attacking monster
+        this.health = this.health - damage;  
     },
     
     onCollision: function(){

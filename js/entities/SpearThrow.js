@@ -18,6 +18,7 @@ game.SpearThrow = me.Entity.extend({
     },
     
     update: function(delta){
+        //changes the spear's direction on where you throw it
         if(this.facing === "left"){
             this.body.vel.x -= this.body.accel.x * me.timer.tick;
             this.flipX(true);
@@ -32,10 +33,12 @@ game.SpearThrow = me.Entity.extend({
     },
     
     collideHandler: function(response){
+        //checks if it collides with either the Enemy base or Enemy Creep.
         if(response.b.type==='EnemyBase' || response.b.type==='EnemyCreep'){
             response.b.loseHealth(this.attack);
             me.game.world.removeChild(this);
-        }else if(me.timer.tick === 1000){
+        }else if(me.timer.tick === 10){
+            //wait for the timer to equal 0 before despawning
             me.game.world.removeChild(this);
         }
     }
