@@ -29,6 +29,8 @@ game.EnemyBaseEntity = me.Entity.extend({
             //sets the castle to be broken and sets the state to play
             this.broken = true;
             game.data.win = true;
+            alert("YOU WON");
+            me.state.change(me.state.MENU);
             this.renderable.setCurrentAnimation("broken");
         }
         //updates the castle to check if anything happens

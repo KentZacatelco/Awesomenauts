@@ -3,6 +3,8 @@ game.PlayScreen = me.ScreenObject.extend({
 	 *  action to perform on state change
 	 */
 	onResetEvent: function() {
+//                var audio = new Audio('gamebackground');
+//                audio.play("gamebackground");
 		// reset the score
 		game.data.score = 0;
                 //shows what stage is gonna be loaded
@@ -21,9 +23,11 @@ game.PlayScreen = me.ScreenObject.extend({
                 //gets info from spendGold
                 var spendGold = me.pool.pull("SpendGold", 0, 0, {});
                 me.game.world.addChild(spendGold, 0);
-                
+                //loads the minimap
                 game.data.minimap = me.pool.pull("minimap", 10, 10, {});
                 me.game.world.addChild(game.data.minimap, 30);
+                
+                game.gameover = false;
                 
                 //sets the keys to set an output wheen the key is pressed
                 me.input.bindKey(me.input.KEY.B, "buy");
@@ -39,6 +43,8 @@ game.PlayScreen = me.ScreenObject.extend({
 		// add our HUD to the game world
 		this.HUD = new game.HUD.Container();
 		me.game.world.addChild(this.HUD);
+                
+//                me.audio.playTrack("gamebackground");
 	},
 
 
@@ -53,6 +59,9 @@ game.PlayScreen = me.ScreenObject.extend({
         resetPlayer: function(x, y){
             game.data.player = me.pool.pull("player", 0, 420, {});
             me.game.world.addChild(game.data.player, 5);
+            //loads the Player Locator
+            game.data.MiniPlayerLocation = me.pool.pull("MiniPlayerLocation", 10, 10, {});
+            me.game.world.addChild(game.data.MiniPlayerLocation, 35);
         }
         
 });

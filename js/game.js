@@ -10,17 +10,26 @@ var game = {
         enemyBaseHealth: 10,
         playerBaseHealth: 10,
         enemyCreepHealth: 10,
-        playerHealth: 10,
         enemyCreepAttack: 1,
+        enemyCreepAttackTimer: 1000,
+        PlayerCreepHealth: 10,
+        PlayerCreepAttack: 1,
+        PlayerCreepAttackTimer: 1000,
+        creepMoveSpeed: 5,
+        playerHealth: 10,
         playerAttack: 1,
         playerAttackTimer: 850,
-        enemyCreepAttackTimer: 1000,
         playerMoveSpeed: 5,
-        creepMoveSpeed: 5,
         gameTimerManager: "",
         heroDeathManager: "",
         spearTimer: 1000,
+        arrowTimer: 1000,
+        fireballTimer: 1000,
         player: "",
+        player2: "",
+        player3: "",
+        player4: "",
+        player5: "",
         exp: 0,
         gold: 10,
         skill1: 0,
@@ -33,7 +42,9 @@ var game = {
         pausePos: "",
         buyscreen: "",
         buytext: "",
-        minimap: ""
+        minimap: "",
+        MiniPlayerLocation: "",
+        audio: ""
    },
     // Run on page load.
     "onload": function() {
@@ -54,6 +65,7 @@ var game = {
         me.state.SPENDEXP = 112;
         me.state.LOAD = 113;
         me.state.NEW = 114;
+        me.state.CHARACTER = 115;
 
         // Initialize the audio.
         me.audio.init("mp3,ogg");
@@ -70,15 +82,23 @@ var game = {
     // Run on game resources loaded.
     "loaded": function() {
         me.pool.register("player", game.PlayerEntity, true);
+        me.pool.register("player2", game.Player2Entity, true);
+        me.pool.register("player3", game.Player3Entity, true);
+        me.pool.register("player4", game.Player4Entity, true);
+        me.pool.register("player5", game.Player5Entity, true);
         me.pool.register("PlayerBase", game.PlayerBaseEntity);
         me.pool.register("EnemyBase", game.EnemyBaseEntity);
         me.pool.register("EnemyCreep", game.EnemyCreep, true);
+        me.pool.register("PlayerCreep", game.PlayerCreep, true);
         me.pool.register("GameTimerManager", game.GameTimerManager);
         me.pool.register("HeroDeathManager", game.HeroDeathManager);
         me.pool.register("ExperienceManager", game.ExperienceManager);
         me.pool.register("SpendGold", game.SpendGold);
         me.pool.register("spear", game.SpearThrow, true);
+        me.pool.register("arrow", game.arrow, true);
+        me.pool.register("fireball", game.fireball, true);
         me.pool.register("minimap", game.minimap, true);
+        me.pool.register("MiniPlayerLocation", game.MiniPlayerLocation, true);
 
         //the screen states that will be in the game 
         me.state.set(me.state.MENU, new game.TitleScreen());
@@ -86,6 +106,7 @@ var game = {
         me.state.set(me.state.SPENDEXP, new game.SpendExp());
         me.state.set(me.state.LOAD, new game.LoadProfile());
         me.state.set(me.state.NEW, new game.NewProfile());
+        me.state.set(me.state.CHARACTER, new game.NewProfile());
 
         // Start the game.
         me.state.change(me.state.MENU);

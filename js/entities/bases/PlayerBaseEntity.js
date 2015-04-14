@@ -14,7 +14,6 @@ game.PlayerBaseEntity = me.Entity.extend({
         this.health = game.data.playerBaseHealth;
         this.alwaysUpdate = true;
         this.body.onCollision = this.onCollision.bind(this);
-        console.log("init");
         this.type = "PlayerBase";
         
         this.renderable.addAnimation("idle", [0]);
@@ -26,7 +25,9 @@ game.PlayerBaseEntity = me.Entity.extend({
         if(this.health<=0){
             //sets the building to be broken and make the player lose
             this.broken = true;
-            this.data.lose = false;
+            game.data.lose = true;
+            alert("YOU LOST");
+            me.state.change(me.state.MENU);
             this.renderable.setCurrentAnimation("broken");
         }
         this.body.update(delta);

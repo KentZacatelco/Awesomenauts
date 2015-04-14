@@ -38,7 +38,17 @@ game.SpendGold = Object.extend({
         game.data.buyscreen.updateWhenPaused = true;
         game.data.buyscreen.setOpacity(0.8);
         me.game.world.addChild(game.data.buyscreen, 34);
-        game.data.player.body.setVelocity(0,0);
+        if(game.data.player){
+            game.data.player.body.setVelocity(0,0);
+        }else if(game.data.player2){
+            game.data.player2.body.setVelocity(0,0);
+        }else if(game.data.player3){
+            game.data.player3.body.setVelocity(0,0);
+        }else if(game.data.player4){
+            game.data.player4.body.setVelocity(0,0);
+        }else if(game.data.player5){
+            game.data.player5.body.setVelocity(0,0);
+        }
         //pauses the PLAY state
         me.state.pause(me.state.PLAY);
         me.input.bindKey(me.input.KEY.F1, "F1", true);
@@ -66,9 +76,11 @@ game.SpendGold = Object.extend({
                 this.font.draw(renderer.getContext(), "Skill 1: Increasing Damage. Current Level: " + game.data.skill1 + " Cost: " + ((game.data.skill1+1)*10), this.pos.x, this.pos.y + 40);
                 this.font.draw(renderer.getContext(), "Skill 2: Run Faster! Current Level: " + game.data.skill2 + " Cost: " + ((game.data.skill2+1)*10), this.pos.x, this.pos.y + 80);
                 this.font.draw(renderer.getContext(), "Skill 3: Increase Health. Current Level: " + game.data.skill3 + " Cost: " + ((game.data.skill3+1)*10), this.pos.x, this.pos.y + 120);
-                this.font.draw(renderer.getContext(), "Q Ability: Speed Burst. Current Level: " + game.data.ability1 + " Cost: " + ((game.data.ability1+1)*10), this.pos.x, this.pos.y + 160);
-                this.font.draw(renderer.getContext(), "W Ability: Eat Your Creep For Health: " + game.data.ability2 + " Cost: " + ((game.data.ability2+1)*10), this.pos.x, this.pos.y + 200);
-                this.font.draw(renderer.getContext(), "E Ability: Throw Your Spear" + game.data.ability3 + " Cost: " + ((game.data.ability3+1)*10), this.pos.x, this.pos.y + 240);
+                if(game.data.player){
+                    this.font.draw(renderer.getContext(), "Q Ability: Speed Burst. Current Level: " + game.data.ability1 + " Cost: " + ((game.data.ability1+1)*10), this.pos.x, this.pos.y + 160);
+                    this.font.draw(renderer.getContext(), "W Ability: Eat Your Creep For Health: " + game.data.ability2 + " Cost: " + ((game.data.ability2+1)*10), this.pos.x, this.pos.y + 200);
+                    this.font.draw(renderer.getContext(), "E Ability: Throw Your Spear" + game.data.ability3 + " Cost: " + ((game.data.ability3+1)*10), this.pos.x, this.pos.y + 240);
+                }
             }
         }));
         me.game.world.addChild(game.data.buytext, 35);
@@ -78,7 +90,17 @@ game.SpendGold = Object.extend({
         this.buying = false;
         //resumes the state to PLAY
         me.state.resume(me.state.PLAY);
-        game.data.player.body.setVelocity(game.data.playerMoveSpeed, 20);
+        if(game.data.player){
+            game.data.player.body.setVelocity(game.data.playerMoveSpeed, 20);
+        } else if(game.data.player2){
+            game.data.player2.body.setVelocity(game.data.playerMoveSpeed, 20);
+        }else if(game.data.player3){
+            game.data.player3.body.setVelocity(game.data.playerMoveSpeed, 20);
+        }else if(game.data.player4){
+            game.data.player4.body.setVelocity(game.data.playerMoveSpeed, 20);
+        }else if(game.data.player5){
+            game.data.player5.body.setVelocity(game.data.playerMoveSpeed, 20);
+        }
         me.game.world.removeChild(game.data.buyscreen);
         //it unbinds the keys to prevent people buying outside of the shop
         me.input.unbindKey(me.input.KEY.F1, "F1", true);
@@ -127,11 +149,11 @@ game.SpendGold = Object.extend({
             return true;
         }else if(skill===3 && (game.data.gold >= ((game.data.skill3+1)*10))){
             return true;
-        }else if(skill===4 && (game.data.gold >= ((game.data.skill4+1)*10))){
+        }else if(skill===4 && (game.data.gold >= ((game.data.ability1+1)*10))){
             return true;
-        }else if(skill===5 && (game.data.gold >= ((game.data.skill5+1)*10))){
+        }else if(skill===5 && (game.data.gold >= ((game.data.ability2+1)*10))){
             return true;
-        }else if(skill===6 && (game.data.gold >= ((game.data.skill6+1)*10))){
+        }else if(skill===6 && (game.data.gold >= ((game.data.ability3+1)*10))){
             return true;
         }else{
             return false;

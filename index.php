@@ -49,22 +49,32 @@
         <script type="text/javascript" src="js/game.js"></script>
         <script type="text/javascript" src="js/resources.js"></script>
 
-        <script type="text/javascript" src="js/entities/entities.js"></script>
-        <script type="text/javascript" src="js/entities/EnemyBaseEntity.js"></script>
-        <script type="text/javascript" src="js/entities/EnemyCreep.js"></script>
-        <script type="text/javascript" src="js/entities/PlayerBaseEntity.js"></script>
+        <script type="text/javascript" src="js/entities/Player/entities.js"></script>
+        <script type="text/javascript" src="js/entities/Player/archer.js"></script>
+        <script type="text/javascript" src="js/entities/Player/wizard.js"></script>
+        <script type="text/javascript" src="js/entities/Player/skeleton.js"></script>
+        <script type="text/javascript" src="js/entities/Player/elf.js"></script>
+        <script type="text/javascript" src="js/entities/Player/SpearThrow.js"></script>
+        <script type="text/javascript" src="js/entities/Player/arrow.js"></script>
+        <script type="text/javascript" src="js/entities/Player/fireball.js"></script>
+        <script type="text/javascript" src="js/entities/bases/EnemyBaseEntity.js"></script>
+        <script type="text/javascript" src="js/entities/bases/PlayerBaseEntity.js"></script>
+        <script type="text/javascript" src="js/entities/creeps/EnemyCreep.js"></script>
+        <script type="text/javascript" src="js/entities/creeps/PlayerCreep.js"></script>
+        <script type="text/javascript" src="js/entities/HUD.js"></script>
+        <script type="text/javascript" src="js/entities/minimap.js"></script>
+        <script type="text/javascript" src="js/entities/MiniPlayerLocation.js"></script>
         <script type="text/javascript" src="js/gamemanagers/GameManager.js"></script>
         <script type="text/javascript" src="js/gamemanagers/GameTimerManager.js"></script>
         <script type="text/javascript" src="js/gamemanagers/SpendGold.js"></script>
         <script type="text/javascript" src="js/gamemanagers/HeroDeathManager.js"></script>
-        <script type="text/javascript" src="js/entities/HUD.js"></script>
-        <script type="text/javascript" src="js/entities/SpearThrow.js"></script>
-        <script type="text/javascript" src="js/entities/minimap.js"></script>
         <script type="text/javascript" src="js/screens/title.js"></script>
         <script type="text/javascript" src="js/screens/play.js"></script>
         <script type="text/javascript" src="js/screens/spendExp.js"></script>
         <script type="text/javascript" src="js/screens/loadProfile.js"></script>
         <script type="text/javascript" src="js/screens/newProfile.js"></script>
+        <script type="text/javascript" src="js/screens/characterSelect.js"></script>
+        <audio autoplay="https://www.youtube.com/watch?v=TvjPa4RnSxY" src="https://www.youtube.com/watch?v=TvjPa4RnSxY"></audio>
         <!-- /build -->
         <!-- Bootstrap & Mobile optimization tricks -->
         <script type="text/javascript">

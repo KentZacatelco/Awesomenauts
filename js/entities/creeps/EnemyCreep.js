@@ -69,12 +69,49 @@ game.EnemyCreep = me.Entity.extend({
                 this.lastHit = this.now;
                 response.b.loseHealth(game.data.enemyCreepAttack);
             }
-        }else if(response.b.type==='PlayerEntity'){
+        }else if(response.b.type==='Player2Entity'){
             var xdif = this.pos.x - response.b.pos.x;
             
             this.attacking=true;
+            this.lastAttacking=this.now;
+            if(xdif>0){
+                this.pos.x = this.pos.x + 1;
+                this.body.vel.x = 0;
+            }
+            if((this.now-this.lastHit >= 1000) && xdif>0){
+                this.lastHit = this.now;
+                response.b.loseHealth(game.data.enemyCreepAttack);
+            }
+        }else if(response.b.type==='Player3Entity'){
+            var xdif = this.pos.x - response.b.pos.x;
+            this.attacking=true;
+            this.lastAttacking=this.now;
             
+            if(xdif>0){
+                this.pos.x = this.pos.x + 1;
+                this.body.vel.x = 0;
+            }
+            if((this.now-this.lastHit >= 1000) && xdif>0){
+                this.lastHit = this.now;
+                response.b.loseHealth(game.data.enemyCreepAttack);
+            }
+        }else if(response.b.type==='Player4Entity'){
+            var xdif = this.pos.x - response.b.pos.x;
             
+            this.attacking=true;
+            this.lastAttacking=this.now;
+            if(xdif>0){
+                this.pos.x = this.pos.x + 1;
+                this.body.vel.x = 0;
+            }
+            if((this.now-this.lastHit >= 1000) && xdif>0){
+                this.lastHit = this.now;
+                response.b.loseHealth(game.data.enemyCreepAttack);
+            }
+        }else if(response.b.type==='Player5Entity'){
+            var xdif = this.pos.x - response.b.pos.x;
+            this.attacking=true;
+            this.lastAttacking=this.now;
             if(xdif>0){
                 this.pos.x = this.pos.x + 1;
                 this.body.vel.x = 0;

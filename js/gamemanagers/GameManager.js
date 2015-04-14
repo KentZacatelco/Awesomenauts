@@ -7,11 +7,9 @@ game.ExperienceManager = Object.extend({
         if (game.data.win === true && !this.gameover) {
             //sets the state to gameover and makes you win
             this.gameOver(true);
-            alert("YOU WIN");
         } else if (game.data.win === false && !this.gameover) {
             //sets the state to gameover and makes you lose
             this.gameOver(false);
-            alert("YOU LOST");
         }
 
         return true;
@@ -42,13 +40,12 @@ game.ExperienceManager = Object.extend({
                 .success(function(response) {
                     if (response === "true") {
                         //sets state to MENU
-                        me.state.change(me.state.MENU);
                     } else {
                         alert(response);
                     }
                 })
                 .fail(function(response) {
-                    //tells if there is an error
+                    //tells you lose
                     alert("Fail");
                 });
     }

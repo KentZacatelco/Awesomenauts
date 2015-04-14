@@ -1,7 +1,7 @@
-game.SpearThrow = me.Entity.extend({
+game.fireball = me.Entity.extend({
     init: function(x, y, settings, facing){
         this._super(me.Entity, 'init', [x, y, {
-                image: "spear",
+                image: "fireball",
                 width: 48,
                 height: 48,
                 spritewidth: "48",
@@ -12,8 +12,8 @@ game.SpearThrow = me.Entity.extend({
         }]);
         this.alwaysUpdate = true;
         this.body.setVelocity(8, 0);
-        this.attack = game.data.ability3*3;
-        this.type = "spear";
+        this.attack = (game.data.skill1+1)*10;
+        this.type = "fireball";
         this.facing = facing;
     },
     
@@ -34,11 +34,12 @@ game.SpearThrow = me.Entity.extend({
     
     collideHandler: function(response){
         //checks if it collides with either the Enemy base or Enemy Creep.
-        if(response.b.type==='EnemyBase' || response.b.type==='EnemyCreep'){
+        if(response.b.type==='EnemyCreep'){
             response.b.loseHealth(this.attack);
             me.game.world.removeChild(this);
-        }else if(me.timer.tick === 10){
-            //wait for the timer to equal 0 before despawning
+        }
+        if(response.b.type==='EnemyBase'){
+            response.b.loseHealth(this.attack);
             me.game.world.removeChild(this);
         }
     }
