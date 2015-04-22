@@ -106,7 +106,9 @@ game.Player3Entity = me.Entity.extend({
     checkAbilityKeys: function(){
         //checks if any skill is pressed
         if(me.input.isKeyPressed("skill1")){
+            
         }else if(me.input.isKeyPressed("skill2")){
+            
         }else if(me.input.isKeyPressed("skill3")){
             this.shootFireball();
             this.renderable.setCurrentAnimation("attack", "idle");
@@ -114,7 +116,7 @@ game.Player3Entity = me.Entity.extend({
     },
     shootFireball: function(){
         //checks the timer to launch fireball
-        if(this.now-this.lastFireball >= game.data.fireballTimer && game.data.ability3 >= 0){
+        if(this.now-this.lastFireball >= game.data.fireballTimer && game.data.ability3 > 0){
             this.lastFireball = this.now;
             var fireball = me.pool.pull("fireball", this.pos.x, this.pos.y, {}, this.facing);
             me.game.world.addChild(fireball, 10);

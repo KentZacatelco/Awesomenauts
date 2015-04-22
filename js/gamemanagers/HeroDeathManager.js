@@ -8,18 +8,23 @@ game.HeroDeathManager = Object.extend({
         //checks if player/players is dead
         if(game.data.player.dead){
             me.game.world.removeChild(game.data.player);
+            me.game.world.removeChild(game.data.miniPlayer);
             me.state.current().resetPlayer(10, 0);
         }else if(game.data.player2.dead){
             me.game.world.removeChild(game.data.player2);
+            me.game.world.removeChild(game.data.miniPlayer);
             me.state.current().resetPlayer(10, 0);
         }else if(game.data.player3.dead){
             me.game.world.removeChild(game.data.player3);
+            me.game.world.removeChild(game.data.miniPlayer);
             me.state.current().resetPlayer(10, 0);
         }else if(game.data.player4.dead){
             me.game.world.removeChild(game.data.player4);
+            me.game.world.removeChild(game.data.miniPlayer);
             me.state.current().resetPlayer(10, 0);
         }else if(game.data.player5.dead){
             me.game.world.removeChild(game.data.player5);
+            me.game.world.removeChild(game.data.miniPlayer);
             me.state.current().resetPlayer(10, 0);
         }
         

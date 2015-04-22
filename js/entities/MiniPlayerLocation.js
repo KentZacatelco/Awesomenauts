@@ -8,6 +8,7 @@ game.MiniPlayerLocation = me.Entity.extend({
         this.settings.width = this.diameter;
         this.settings.height = this.diameter;
         this.settings.spritewidth = this.diameter;
+        this.settings.spriteheight = this.diameter;
         this.settings = this.diameter;
         this.floating = true;
         this.image = me.video.createCanvas(this.settings.width, this.settings.height);
@@ -21,7 +22,6 @@ game.MiniPlayerLocation = me.Entity.extend({
         ctx.fill();
         ctx.stroke();
         
-        var my = this;
         this._super(me.Entity, "init", [x, y, {
             width: 14, 
             height: 14,

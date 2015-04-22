@@ -23,8 +23,8 @@ var game = {
         gameTimerManager: "",
         heroDeathManager: "",
         spearTimer: 1000,
-        arrowTimer: 1000,
-        fireballTimer: 1000,
+        arrowTimer: 100,
+        fireballTimer: 10000,
         player: "",
         player2: "",
         player3: "",
@@ -41,9 +41,10 @@ var game = {
         win: "",
         pausePos: "",
         buyscreen: "",
+        pausescreen: "",
         buytext: "",
         minimap: "",
-        MiniPlayerLocation: "",
+        miniPlayer: "",
         audio: ""
    },
     // Run on page load.
@@ -94,11 +95,12 @@ var game = {
         me.pool.register("HeroDeathManager", game.HeroDeathManager);
         me.pool.register("ExperienceManager", game.ExperienceManager);
         me.pool.register("SpendGold", game.SpendGold);
+        me.pool.register("Pause", game.Pause);
         me.pool.register("spear", game.SpearThrow, true);
         me.pool.register("arrow", game.arrow, true);
         me.pool.register("fireball", game.fireball, true);
         me.pool.register("minimap", game.minimap, true);
-        me.pool.register("MiniPlayerLocation", game.MiniPlayerLocation, true);
+        me.pool.register("miniplayer", game.MiniPlayerLocation, true);
 
         //the screen states that will be in the game 
         me.state.set(me.state.MENU, new game.TitleScreen());

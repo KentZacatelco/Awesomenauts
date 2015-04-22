@@ -1,21 +1,24 @@
 game.CharacterSelect = me.ScreenObject.extend({
     onResetEvent: function() {
-        var gameTimerManager = me.pool.pull("GameTimerManager", 0, 0, {});
-        me.game.world.addChild(gameTimerManager, 0);
-        var heroDeathManager = me.pool.pull("HeroDeathManager", 0, 0, {});
-        me.game.world.addChild(heroDeathManager, 0);
-        var experienceManager = me.pool.pull("ExperienceManager", 0, 0, {});
-        me.game.world.addChild(experienceManager, 0);
-        var spendGold = me.pool.pull("SpendGold", 0, 0, {});
-        me.game.world.addChild(spendGold, 0);
-        game.data.minimap = me.pool.pull("minimap", 10, 10, {});
-        me.game.world.addChild(game.data.minimap, 30);
+        me.game.world.addChild(new me.Sprite(0, 0, me.loader.getImage('char_select')), -1);
 
         me.input.bindKey(me.input.KEY.ONE, "1");
         me.input.bindKey(me.input.KEY.TWO, "2");
         me.input.bindKey(me.input.KEY.THREE, "3");
         me.input.bindKey(me.input.KEY.FOUR, "4");
         me.input.bindKey(me.input.KEY.FIVE, "5");
+        
+        me.game.world.addChild(new (me.Renderable.extend({
+            init: function() {
+                //sets the size, font, color and place of the text
+                this._super(me.Renderable, 'init', [10, 10, 300, 50]);
+                this.font = new me.Font("Arial", 26, "white");
+            },
+            draw: function(renderer) {
+                //sets the texts
+                this.font.draw(renderer.getContext(), "CHOOSE YOUR CHARACTER", this.pos.x, this.pos.y);
+            }
+        })));
 
         if (me.input.keys("1")) {
             game.data.player = me.pool.pull("player", 0, 420, {});

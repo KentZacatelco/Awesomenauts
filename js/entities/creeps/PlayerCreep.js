@@ -3,12 +3,12 @@ game.PlayerCreep = me.Entity.extend({
         this._super(me.Entity, 'init', [x, y, {
                 //sets image as creep
                 image: "creep2",
-                width: 32,
-                height: 64,
-                spritewidth: "32",
-                spriteheight: "64",
+                width: 100,
+                height: 85,
+                spritewidth: "100",
+                spriteheight: "85",
                 getShape: function(){
-                    return (new me.Rect(0, 0, 32, 64)).toPolygon();
+                    return (new me.Rect(0, 0, 100, 85)).toPolygon();
                 }
         }]);
         this.health = game.data.PlayerCreepHealth;
@@ -39,6 +39,8 @@ game.PlayerCreep = me.Entity.extend({
         }
         this.now = new Date().getTime();
         this.body.vel.x += this.body.accel.x * me.timer.tick;
+        this.facing = "right";
+        this.flipX(true);
         me.collision.check(this, true, this.collideHandler.bind(this), true);
         this.body.update(delta);
         this._super(me.Entity, "update", [delta]);
