@@ -8,6 +8,7 @@ game.resources = [
         //files for all the images.
         {name: "background-tiles", type:"image", src: "data/img/background-tiles.png"},
         {name: "meta-tiles", type:"image", src: "data/img/meta-tiles.png"},
+        {name: "custom-background-tile", type:"image", src: "data/img/custom-background-tile.png"},
         
         {name: "creep1", type: "image", src: "data/img/brainmonster.png"},
         {name: "creep2", type: "image", src: "data/img/gloop.png"},
@@ -23,7 +24,7 @@ game.resources = [
         {name: "fireball", type: "image", src: "data/img/fireball.png"},
         
         {name: "tower", type: "image", src: "data/img/tower_round.svg.png"},
-        {name: "minimap", type: "image", src: "data/img/MiniMapImage.png"},
+        {name: "minimap", type: "image", src: "data/img/MiniMapImage2.png"},
         
         {name: "title-screen", type: "image", src: "data/img/title.png"},
         {name: "exp-screen", type: "image", src: "data/img/loadpic.png"},
