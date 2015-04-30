@@ -1,23 +1,23 @@
-game.arrow = me.Entity.extend({
+game.magic = me.Entity.extend({
     init: function(x, y, settings, facing){
         this._super(me.Entity, 'init', [x, y, {
-                image: "arrow",
-                width: 23,
-                height: 23,
-                spritewidth: "23",
-                spriteheight: "23",
+                image: "magic",
+                width: 24,
+                height: 24,
+                spritewidth: "24",
+                spriteheight: "24",
                 getShape: function(){
-                    return (new me.Rect(0, 0, 23, 23)).toPolygon();
+                    return (new me.Rect(0, 0, 24, 24)).toPolygon();
                 }
         }]);
         this.alwaysUpdate = true;
         this.body.setVelocity(8, 0);
-        this.attack = game.data.playerAttack;
-        this.type = "arrow";
+        this.attack = game.data.skill2*10;
+        this.type = "magic";
         this.facing = facing;
     },
     update: function(delta){
-        //changes the arrow's direction on where you shoot it
+        //changes the spear's direction on where you throw it
         if(this.facing === "left"){
             this.body.vel.x -= this.body.accel.x * me.timer.tick;
             this.flipX(true);

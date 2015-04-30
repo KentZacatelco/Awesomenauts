@@ -16,7 +16,6 @@ game.SpearThrow = me.Entity.extend({
         this.type = "spear";
         this.facing = facing;
     },
-    
     update: function(delta){
         //changes the spear's direction on where you throw it
         if(this.facing === "left"){
@@ -31,7 +30,6 @@ game.SpearThrow = me.Entity.extend({
         this._super(me.Entity, "update", [delta]);
         return true;
     },
-    
     collideHandler: function(response){
         //checks if it collides with either the Enemy base or Enemy Creep.
         if(response.b.type==='EnemyCreep'){

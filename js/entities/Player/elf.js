@@ -40,14 +40,12 @@ game.Player5Entity = me.Entity.extend({
         this.facing = "right";
         this.dead = false;
     },
-    
     addAnimation: function(){
         //sets and add animations for the player
         this.renderable.addAnimation("idle", [26]);
         this.renderable.addAnimation("walk", [143, 144, 145, 146, 147, 148, 149, 150, 151], 80);
         this.renderable.addAnimation("attack", [195, 196, 197, 198, 199, 200], 80);
     },
-    
     update: function(delta){
         //checks and update functions that supports the player
         this.now = new Date().getTime();
@@ -109,6 +107,15 @@ game.Player5Entity = me.Entity.extend({
         if(me.input.isKeyPressed("skill1")){
         }else if(me.input.isKeyPressed("skill2")){
         }else if(me.input.isKeyPressed("skill3")){
+            this.magic();
+        }
+    },
+    magic: function(){
+        //checks the timer to launch fireball
+        if(this.now-this.lastmagic >= game.data.magicTimer && game.data.ability2 > 0){
+            this.lastMagic = this.now;
+            var magic = me.pool.pull("magic", this.pos.x, this.pos.y, {}, this.facing);
+            me.game.world.addChild(magic, 10);
         }
     },
     setAnimation: function(){

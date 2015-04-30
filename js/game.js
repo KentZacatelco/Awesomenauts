@@ -20,16 +20,29 @@ var game = {
         playerAttack: 1,
         playerAttackTimer: 850,
         playerMoveSpeed: 5,
+        heroHealth: 50,
+        heroAttack: 5,
+        heroAttackTimer: 2000,
+        heroMoveSpeed: 10,
+        heroAbility1timer: 1000,
+        heroAbility2timer: 1000,
+        heroAbility3timer: 1000,
+        heroAbility1: 1,
+        heroAbility2: 1,
+        heroAbility3: 1,
         gameTimerManager: "",
         heroDeathManager: "",
         spearTimer: 1000,
         arrowTimer: 100,
         fireballTimer: 10000,
+        magicTimer: 100,
         player: "",
         player2: "",
         player3: "",
         player4: "",
         player5: "",
+        enemyhero: "",
+        enemyhero2: "",
         exp: 0,
         gold: 10,
         skill1: 0,
@@ -87,6 +100,8 @@ var game = {
         me.pool.register("player3", game.Player3Entity, true);
         me.pool.register("player4", game.Player4Entity, true);
         me.pool.register("player5", game.Player5Entity, true);
+        me.pool.register("enemyhero", game.enemyhero, true);
+        me.pool.register("enemyhero2", game.enemyhero2, true);
         me.pool.register("PlayerBase", game.PlayerBaseEntity);
         me.pool.register("EnemyBase", game.EnemyBaseEntity);
         me.pool.register("EnemyCreep", game.EnemyCreep, true);
@@ -99,6 +114,7 @@ var game = {
         me.pool.register("spear", game.SpearThrow, true);
         me.pool.register("arrow", game.arrow, true);
         me.pool.register("fireball", game.fireball, true);
+        me.pool.register("magic", game.magic, true);
         me.pool.register("minimap", game.minimap, true);
         me.pool.register("miniplayer", game.MiniPlayerLocation, true);
 

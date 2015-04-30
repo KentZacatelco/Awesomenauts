@@ -27,6 +27,7 @@ game.Player4Entity = me.Entity.extend({
         //sets the player timer for attacks
         this.now = new Date().getTime();
         this.lastHit = this.now;
+        this.lastMagic = this.now;
         this.lastAttack = new Date().getTime();
     },
     setAttributes: function(){
@@ -40,14 +41,12 @@ game.Player4Entity = me.Entity.extend({
         this.facing = "right";
         this.dead = false;
     },
-    
     addAnimation: function(){
         //sets and add animations for the player
         this.renderable.addAnimation("idle", [26]);
         this.renderable.addAnimation("walk", [143, 144, 145, 146, 147, 148, 149, 150, 151], 80);
         this.renderable.addAnimation("attack", [195, 196, 197, 198, 199, 200], 80);
     },
-    
     update: function(delta){
         //checks and update functions that supports the player
         this.now = new Date().getTime();

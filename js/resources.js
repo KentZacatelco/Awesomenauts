@@ -19,9 +19,13 @@ game.resources = [
         {name: "player4", type: "image", src: "data/img/skeletonDagger.png"},
         {name: "player5", type: "image", src: "data/img/elf.png"},
         
+        {name: "enemyhero", type: "image", src: "data/img/skeletonBigSword.png"},
+        {name: "enemyhero2", type: "image", src: "data/img/darkelf.png"},
+        
         {name: "spear", type: "image", src: "data/img/spear.png"},
         {name: "arrow", type: "image", src: "data/img/arrow.png"},
         {name: "fireball", type: "image", src: "data/img/fireball.png"},
+        {name: "magic", type: "image", src: "data/img/magic.png"},
         
         {name: "tower", type: "image", src: "data/img/tower_round.svg.png"},
         {name: "minimap", type: "image", src: "data/img/MiniMapImage2.png"},
@@ -51,9 +55,7 @@ game.resources = [
 	 * @example
 	 * {name: "example_bgm", type: "audio", src: "data/bgm/"},
 	 */	
-//        {name: "gamebackground", type: "audio", src: "https://www.youtube.com/watch?v=TvjPa4RnSxY"},
-//        {name: "example_bgm", type: "audio", src: "data/bgm/Gorment_Race.xspf"}
-
+        {name: "Music1", type: "audio", src: "data/bgm/Kirby-GourmetRaceAcapella.mp3"}
 	/* Sound effects. 
 	 * @example
 	 * {name: "example_sfx", type: "audio", src: "data/sfx/"}

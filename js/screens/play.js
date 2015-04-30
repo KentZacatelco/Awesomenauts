@@ -3,7 +3,7 @@ game.PlayScreen = me.ScreenObject.extend({
 	 *  action to perform on state change
 	 */
 	onResetEvent: function() {
-                me.audio.playTrack("DST-InertExponent");
+                me.audio.playTrack("Music1");
 		// reset the score
 		game.data.score = 0;
                 //shows what stage is gonna be loaded
@@ -27,7 +27,7 @@ game.PlayScreen = me.ScreenObject.extend({
                 me.game.world.addChild(pause, 0);
                 //loads the minimap
                 game.data.minimap = me.pool.pull("minimap", 10, 10, {});
-                me.game.world.addChild(game.data.minimap, 30);
+                me.game.world.addChild(game.data.minimap, 31);
                 
                 game.gameover = false;
                 
@@ -60,11 +60,11 @@ game.PlayScreen = me.ScreenObject.extend({
 	},
         
         resetPlayer: function(x, y){
-            game.data.player4 = me.pool.pull("player4", 0, 420, {});
-            me.game.world.addChild(game.data.player4, 5);
+            game.data.player3 = me.pool.pull("player3", 0, 420, {});
+            me.game.world.addChild(game.data.player3, 5);
             //loads the Player Locator
             game.data.miniPlayer = me.pool.pull("miniplayer", 10, 10, {});
-            me.game.world.addChild(game.data.miniPlayer, 35);
+            me.game.world.addChild(game.data.miniPlayer, 32);
         }
         
 });

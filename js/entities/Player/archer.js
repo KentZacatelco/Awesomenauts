@@ -114,7 +114,7 @@ game.Player2Entity = me.Entity.extend({
     },
     shootarrow: function(){
         //checks the timer to shoot the arrow
-        if(this.now-this.lastArrow >= game.data.arrowTimer && game.data.ability3 >=0){
+        if(this.now-this.lastArrow >= game.data.arrowTimer){
             this.lastArrow = this.now;
             var arrow = me.pool.pull("arrow", this.pos.x, this.pos.y, {}, this.facing);
             me.game.world.addChild(arrow, 10);

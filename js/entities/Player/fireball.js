@@ -12,7 +12,7 @@ game.fireball = me.Entity.extend({
         }]);
         this.alwaysUpdate = true;
         this.body.setVelocity(8, 0);
-        this.attack = (game.data.skill1+1)*10;
+        this.attack = (game.data.skill3+1)*10;
         this.type = "fireball";
         this.facing = facing;
     },

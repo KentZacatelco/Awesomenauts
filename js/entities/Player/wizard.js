@@ -28,6 +28,7 @@ game.Player3Entity = me.Entity.extend({
         this.now = new Date().getTime();
         this.lastHit = this.now;
         this.lastFireball = this.now;
+        this.lastMagic = this.now;
         this.lastAttack = new Date().getTime();
     },
     setAttributes: function(){
@@ -106,9 +107,8 @@ game.Player3Entity = me.Entity.extend({
     checkAbilityKeys: function(){
         //checks if any skill is pressed
         if(me.input.isKeyPressed("skill1")){
-            
         }else if(me.input.isKeyPressed("skill2")){
-            
+            this.magic();
         }else if(me.input.isKeyPressed("skill3")){
             this.shootFireball();
             this.renderable.setCurrentAnimation("attack", "idle");
@@ -120,6 +120,14 @@ game.Player3Entity = me.Entity.extend({
             this.lastFireball = this.now;
             var fireball = me.pool.pull("fireball", this.pos.x, this.pos.y, {}, this.facing);
             me.game.world.addChild(fireball, 10);
+        }
+    },
+    magic: function(){
+        //checks the timer to launch fireball
+        if(this.now-this.lastMagic >= game.data.magicTimer && game.data.ability2 > 0){
+            this.lastMagic = this.now;
+            var magic = me.pool.pull("magic", this.pos.x, this.pos.y, {}, this.facing);
+            me.game.world.addChild(magic, 10);
         }
     },
     setAnimation: function(){
