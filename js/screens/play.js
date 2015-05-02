@@ -3,7 +3,6 @@ game.PlayScreen = me.ScreenObject.extend({
 	 *  action to perform on state change
 	 */
 	onResetEvent: function() {
-                me.audio.playTrack("Music1");
 		// reset the score
 		game.data.score = 0;
                 //shows what stage is gonna be loaded
@@ -22,9 +21,6 @@ game.PlayScreen = me.ScreenObject.extend({
                 //gets info from spendGold
                 var spendGold = me.pool.pull("SpendGold", 0, 0, {});
                 me.game.world.addChild(spendGold, 0);
-                //gets info from pause
-                var pause = me.pool.pull("pause", 0, 0, {});
-                me.game.world.addChild(pause, 0);
                 //loads the minimap
                 game.data.minimap = me.pool.pull("minimap", 10, 10, {});
                 me.game.world.addChild(game.data.minimap, 31);
@@ -32,7 +28,6 @@ game.PlayScreen = me.ScreenObject.extend({
                 game.gameover = false;
                 
                 //sets the keys to set an output wheen the key is pressed
-                me.input.bindKey(me.input.KEY.P, "pause");
                 me.input.bindKey(me.input.KEY.B, "buy");
                 me.input.bindKey(me.input.KEY.Q, "skill1");
                 me.input.bindKey(me.input.KEY.W, "skill2");

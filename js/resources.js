@@ -30,13 +30,11 @@ game.resources = [
         {name: "tower", type: "image", src: "data/img/tower_round.svg.png"},
         {name: "minimap", type: "image", src: "data/img/MiniMapImage2.png"},
         
-        {name: "title-screen", type: "image", src: "data/img/title.png"},
-        {name: "exp-screen", type: "image", src: "data/img/loadpic.png"},
-        {name: "gold-screen", type: "image", src: "data/img/spend.png"},
-        {name: "load-screen", type: "image", src: "data/img/loadpic.png"},
-        {name: "new-screen", type: "image", src: "data/img/newpic.png"},
-        {name: "char_select", type: "image", src: "data/img/char_select.png"},
-        {name: "pause", type: "image", src: "data/img/pause.png"},
+        {name: "title-screen", type: "image", src: "data/img/CoolSword.png"},
+        {name: "exp-screen", type: "image", src: "data/img/death.png"},
+        {name: "gold-screen", type: "image", src: "data/img/gold.png"},
+        {name: "load-screen", type: "image", src: "data/img/CoolSword2.png"},
+        {name: "new-screen", type: "image", src: "data/img/coolSkull.png"},
 
 	/* Atlases 
 	 * @example
@@ -55,7 +53,6 @@ game.resources = [
 	 * @example
 	 * {name: "example_bgm", type: "audio", src: "data/bgm/"},
 	 */	
-        {name: "Music1", type: "audio", src: "data/bgm/Kirby-GourmetRaceAcapella.mp3"}
 	/* Sound effects. 
 	 * @example
 	 * {name: "example_sfx", type: "audio", src: "data/sfx/"}

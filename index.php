@@ -68,14 +68,14 @@
         <script type="text/javascript" src="js/gamemanagers/GameTimerManager.js"></script>
         <script type="text/javascript" src="js/gamemanagers/SpendGold.js"></script>
         <script type="text/javascript" src="js/gamemanagers/HeroDeathManager.js"></script>
-        <script type="text/javascript" src="js/gamemanagers/pause.js"></script>
         <script type="text/javascript" src="js/screens/title.js"></script>
         <script type="text/javascript" src="js/screens/play.js"></script>
         <script type="text/javascript" src="js/screens/spendExp.js"></script>
         <script type="text/javascript" src="js/screens/loadProfile.js"></script>
         <script type="text/javascript" src="js/screens/newProfile.js"></script>
-        <script type="text/javascript" src="js/screens/characterSelect.js"></script>
-        <audio autoplay="https://www.youtube.com/watch?v=TvjPa4RnSxY" src="https://www.youtube.com/watch?v=TvjPa4RnSxY"></audio>
+        <audio autoplay loop>
+            <source src="data/bgm/SwordArtOnline-SwordlandExtendedRemix.mp3" type="audio/mpeg">
+        </audio>
         <!-- /build -->
         <!-- Bootstrap & Mobile optimization tricks -->
         <script type="text/javascript">

@@ -41,8 +41,6 @@ var game = {
         player3: "",
         player4: "",
         player5: "",
-        enemyhero: "",
-        enemyhero2: "",
         exp: 0,
         gold: 10,
         skill1: 0,
@@ -54,11 +52,9 @@ var game = {
         win: "",
         pausePos: "",
         buyscreen: "",
-        pausescreen: "",
         buytext: "",
         minimap: "",
-        miniPlayer: "",
-        audio: ""
+        miniPlayer: ""
    },
     // Run on page load.
     "onload": function() {
@@ -79,7 +75,6 @@ var game = {
         me.state.SPENDEXP = 112;
         me.state.LOAD = 113;
         me.state.NEW = 114;
-        me.state.CHARACTER = 115;
 
         // Initialize the audio.
         me.audio.init("mp3,ogg");
@@ -100,8 +95,6 @@ var game = {
         me.pool.register("player3", game.Player3Entity, true);
         me.pool.register("player4", game.Player4Entity, true);
         me.pool.register("player5", game.Player5Entity, true);
-        me.pool.register("enemyhero", game.enemyhero, true);
-        me.pool.register("enemyhero2", game.enemyhero2, true);
         me.pool.register("PlayerBase", game.PlayerBaseEntity);
         me.pool.register("EnemyBase", game.EnemyBaseEntity);
         me.pool.register("EnemyCreep", game.EnemyCreep, true);
@@ -110,7 +103,6 @@ var game = {
         me.pool.register("HeroDeathManager", game.HeroDeathManager);
         me.pool.register("ExperienceManager", game.ExperienceManager);
         me.pool.register("SpendGold", game.SpendGold);
-        me.pool.register("Pause", game.Pause);
         me.pool.register("spear", game.SpearThrow, true);
         me.pool.register("arrow", game.arrow, true);
         me.pool.register("fireball", game.fireball, true);
@@ -124,7 +116,6 @@ var game = {
         me.state.set(me.state.SPENDEXP, new game.SpendExp());
         me.state.set(me.state.LOAD, new game.LoadProfile());
         me.state.set(me.state.NEW, new game.NewProfile());
-        me.state.set(me.state.CHARACTER, new game.NewProfile());
 
         // Start the game.
         me.state.change(me.state.MENU);

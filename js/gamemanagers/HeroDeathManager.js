@@ -26,14 +26,6 @@ game.HeroDeathManager = Object.extend({
             me.game.world.removeChild(game.data.player5);
             me.game.world.removeChild(game.data.miniPlayer);
             me.state.current().resetPlayer(10, 0);
-        }else if(game.data.enemyhero.dead){
-            me.game.world.removeChild(game.data.enemyhero);
-            me.game.world.removeChild(game.data.miniPlayer);
-            me.state.current().resetPlayer(3000, 0);
-        }else if(game.data.enemyhero2.dead){
-            me.game.world.removeChild(game.data.enemyhero2);
-            me.game.world.removeChild(game.data.miniPlayer);
-            me.state.current().resetPlayer(3000, 0);
         }
         
         return true;

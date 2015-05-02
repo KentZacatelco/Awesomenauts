@@ -34,7 +34,7 @@ game.SpendGold = Object.extend({
         //sets the buy screen
         game.data.buyscreen = new me.Sprite(game.data.pausePos.x, game.data.pausePos.y, me.loader.getImage('gold-screen'));
         game.data.buyscreen.updateWhenPaused = true;
-        game.data.buyscreen.setOpacity(0.8);
+        game.data.buyscreen.setOpacity(1.0);
         me.game.world.addChild(game.data.buyscreen, 34);
         if(game.data.player){
             game.data.player.body.setVelocity(0,0);
