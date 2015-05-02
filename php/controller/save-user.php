@@ -16,7 +16,6 @@ $query = $_SESSION["connection"]->query("UPDATE users SET "
         . "exp4 = $exp4 WHERE username = \"". $_SESSION["name"]. "\"");
 
 if($query){
-    echo "true";
 }else{
     //tells wwhen. there is an error
     echo "<p>" . $_SESSION["connection"]->error . "</p>";

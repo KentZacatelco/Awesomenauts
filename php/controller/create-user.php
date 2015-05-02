@@ -24,7 +24,6 @@
     $_SESSION["name"] = $username;
     
     if($query) {
-        echo "true";
     }else{
         //tells if there is any errors
         echo "<p>" . $_SESSION["connection"]->error . "</p>";

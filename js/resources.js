@@ -28,7 +28,7 @@ game.resources = [
         {name: "magic", type: "image", src: "data/img/magic.png"},
         
         {name: "tower", type: "image", src: "data/img/tower_round.svg.png"},
-        {name: "minimap", type: "image", src: "data/img/MiniMapImage2.png"},
+        {name: "minimap", type: "image", src: "data/img/miniMapLarge.png"},
         
         {name: "title-screen", type: "image", src: "data/img/CoolSword.png"},
         {name: "exp-screen", type: "image", src: "data/img/death.png"},
@@ -47,7 +47,7 @@ game.resources = [
 	 * {name: "example01", type: "tmx", src: "data/map/example01.json"},
  	 */
         
-        {name: "level01", type: "tmx", src: "data/map/test.tmx"},
+        {name: "level01", type: "tmx", src: "data/map/bigmap1.tmx"}
 
 	/* Background music. 
 	 * @example
