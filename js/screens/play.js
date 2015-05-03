@@ -24,6 +24,9 @@ game.PlayScreen = me.ScreenObject.extend({
                 //loads the minimap
                 game.data.minimap = me.pool.pull("minimap", 10, 10, {});
                 me.game.world.addChild(game.data.minimap, 31);
+                //loads the MiniPlayer
+                game.data.MiniPlayerLocation = me.pool.pull("MiniPlayerLocation", 10, 10, {});
+                me.game.world.addChild(game.data.MiniPlayerLocation, 32);
                 
                 game.gameover = false;
                 
@@ -58,8 +61,8 @@ game.PlayScreen = me.ScreenObject.extend({
             game.data.player3 = me.pool.pull("player3", 0, 420, {});
             me.game.world.addChild(game.data.player3, 5);
             //loads the Player Locator
-            game.data.miniPlayer = me.pool.pull("miniplayer", 10, 10, {});
-            me.game.world.addChild(game.data.miniPlayer, 32);
+            game.data.MiniPlayerLocation = me.pool.pull("MiniPlayerLocation", 10, 10, {});
+            me.game.world.addChild(game.data.MiniPlayerLocation, 32);
         }
         
 });

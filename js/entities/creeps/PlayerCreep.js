@@ -19,12 +19,9 @@ game.PlayerCreep = me.Entity.extend({
         this.lastHit = new Date().getTime();
         this.now = new Date().getTime();
         this.body.setVelocity(3, 20);
-        
         this.type = "PlayerCreep";
-        
         this.renderable.addAnimation("walk", [0, 1, 2, 3, 4], 80);
         this.renderable.setCurrentAnimation("walk");
-        
     },
     
     loseHealth: function(damage){
@@ -45,11 +42,19 @@ game.PlayerCreep = me.Entity.extend({
         this.body.update(delta);
         this._super(me.Entity, "update", [delta]);
         return true;
+        this.checkforjump();
+    },
+    
+    checkforjump: function(){
+        if(this.body.accel.x = 0 && !this.attacking){
+            this.body.jumping = true;
+            this.body.vel.y -= this.body.accel.y * me.timer.tick;
+        }
     },
     
     collideHandler: function(response){
         //checks if it collides with any Entity
-        if(response.b.type==='EnemyBase'){
+        if(response.b.type==='EnemyBaseEntity'){
             this.attacking=true;
             this.lastAttacking=this.now;
             this.body.vel.x = 0;
@@ -58,7 +63,7 @@ game.PlayerCreep = me.Entity.extend({
                 this.lastHit = this.now;
                 response.b.loseHealth(game.data.PlayerCreepAttack);
             }
-        }else if(response.b.type==='EnemyCreepEntity'){
+        }else if(response.b.type==='EnemyCreep'){
             var xdif = this.pos.x - response.b.pos.x;
             
             this.attacking=true;
@@ -72,16 +77,14 @@ game.PlayerCreep = me.Entity.extend({
                 response.b.loseHealth(game.data.PlayerCreepAttack);
             }
         }else if(response.b.type==='EnemyCreepEntity'){
-            var xdif = this.pos.x - response.b.pos.x;
-            
+            var xdif = this.pos.x + response.b.pos.x;
             this.attacking=true;
-            
-            
-            if(xdif>0){
-                this.pos.x = this.pos.x + 1;
+            this.lastAttacking=this.now;
+            if(xdif<0){
+                this.pos.x = this.pos.x - 1;
                 this.body.vel.x = 0;
             }
-            if((this.now-this.lastHit >= 1000) && xdif>0){
+            if((this.now-this.lastHit >= 1000) && xdif<0){
                 this.lastHit = this.now;
                 response.b.loseHealth(game.data.enemyCreepAttack);
             }

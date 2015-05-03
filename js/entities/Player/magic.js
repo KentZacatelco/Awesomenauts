@@ -36,7 +36,7 @@ game.magic = me.Entity.extend({
             response.b.loseHealth(this.attack);
             me.game.world.removeChild(this);
         }
-        if(response.b.type==='EnemyBase'){
+        if(response.b.type==='EnemyBaseEntity'){
             response.b.loseHealth(this.attack);
             me.game.world.removeChild(this);
         }

@@ -28,6 +28,7 @@ game.GameTimerManager = Object.extend({
             //sets the info for the Creep
             this.lastCreep = this.now;
             var creep = me.pool.pull("EnemyCreep", 27500, 0, {});
+            //var creep = me.pool.pull("EnemyCreep", 1000, 0, {});
             var creepe = me.pool.pull("PlayerCreep", 100, 0, {});
             me.game.world.addChild(creepe, 5);
             me.game.world.addChild(creep, 5);

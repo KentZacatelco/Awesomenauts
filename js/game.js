@@ -34,7 +34,7 @@ var game = {
         heroDeathManager: "",
         spearTimer: 1000,
         arrowTimer: 100,
-        fireballTimer: 10000,
+        fireballTimer: 1000,
         magicTimer: 100,
         player: "",
         player2: "",
@@ -54,7 +54,7 @@ var game = {
         buyscreen: "",
         buytext: "",
         minimap: "",
-        miniPlayer: ""
+        MiniPlayerLocation: ""
    },
     // Run on page load.
     "onload": function() {
@@ -108,7 +108,7 @@ var game = {
         me.pool.register("fireball", game.fireball, true);
         me.pool.register("magic", game.magic, true);
         me.pool.register("minimap", game.minimap, true);
-        me.pool.register("miniplayer", game.MiniPlayerLocation, true);
+        me.pool.register("MiniPlayerLocation", game.MiniPlayerLocation, true);
 
         //the screen states that will be in the game 
         me.state.set(me.state.MENU, new game.TitleScreen());
